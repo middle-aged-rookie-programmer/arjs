@@ -1,0 +1,54 @@
+<!-- <p>top works!</p> -->
+<!-- <div style="width: 100%; height: 100%; margin: 0; overflow: hidden;"> -->
+  <!-- <a-entity geometry="primitive: sphere; radius: 1.5"
+          light="type: point; color: white; intensity: 2"
+          material="color: white; shader: flat; src: glow.jpg"
+          position="0 0 -5"></a-entity> -->
+  <!-- 全画面表示で無くする -->
+  <!-- https://stackoverflow.com/questions/50281200/a-frame-setting-height-and-width -->
+<a-scene antialias="true" embedded>
+
+
+  <a-text value="xxxxx" position="-0.3 1.4 -3" color="#000" ></a-text>
+  <a-entity text="value: HELLO; color: red; width: 2;" position="-0.3 1.4 -3"></a-entity>
+  <a-entity geometry="primitive: box; width: 3" material="color: red" position="-0.3 1.4 -20"></a-entity>
+  <a-entity text value="howw" position="0.1 0.9 -0.2" color="#000">
+    how
+  </a-entity>
+  <a-assets>
+      <a-asset-item
+          id="animated-asset"
+          src="asset.glb"
+      ></a-asset-item>
+  </a-assets>
+  <a-entity>
+  <!-- <a-gltf-model src="#animated-asset" position="-0 0 -60" rotation="0 -20 0"></a-gltf-model> -->
+  <!-- <a-obj-model src="#animated-asset" mtl="#animated-asset" position="0 0 -60" rotation="0 -50 0" scale="0.41545641869046673 0.41545641869046673 0.41545641869046673"></a-obj-model> -->
+
+
+  <!-- <a-marker
+    id="animated-marker"
+    type="pattern"
+    preset="custom"
+    url="assets/marker.patt"
+    raycaster="objects: .clickable"
+    emitevents="true"
+    cursor="fuse: false; rayOrigin: mouse;"
+    id="markerA"
+  > -->
+
+<a-marker
+    id="animated-marker"
+    type="pattern"
+    preset="custom"
+    url="marker.patt"
+  >
+  <!-- <a-entity gltf-model="#animated-asset" scale="0.5 0.5 0.5" position="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"></a-entity> -->
+    <!-- <a-gltf-model src="#animated-asset" animation-mixer="loop: repeat" class="clickable" position="-0 -10 -5" rotation="-90 0 -0" scale="0.3 0.3 0.3"></a-gltf-model> -->
+     <a-entity animation="property: rotation;to: 0 0 360; easing: linear; loop: true; dur: 10000">
+      <a-gltf-model src="#animated-asset" class="clickable" position="-0 0 -2" rotation="-90 0 -0" scale="0.50 0.50 0.50" ></a-gltf-model>
+     </a-entity>
+    <!-- <a-gltf-model src="#animated-asset" class="clickable" position="-0 0 -2" scale="0.50 0.50 0.50" animation="property: rotation; from: 0 0 0; to: 0 0 360; easing: linear; loop: true; dur: 10000"></a-gltf-model> -->
+</a-marker>
+
+<a-camera wasd-control="false">

@@ -1,0 +1,64 @@
+<p>showcase works!</p>
+  <!-- 全画面表示で無くする -->
+  <!-- https://stackoverflow.com/questions/50281200/a-frame-setting-height-and-width -->
+
+  <!-- 以下はthree.jsを使う。aframe.jsは不要。 -->
+  <!-- <a-scene antialias="true" embedded>
+    <a-sky
+      color="#DDEEFF"
+    >
+    </a-sky>
+    <a-box
+      color="#4488FF"
+      size="0.2 0.2 0.2"
+      position="0.4 0.2 0"
+      rotation="0 0 0"
+      animation="property: rotation; to: 360 360 0; dur: 4000; easing: linear; loop: true"
+    >
+    </a-box>
+  <a-camera
+    position="0 0 2"
+  >
+  </a-camera>
+  </a-scene> -->
+
+  <a-scene
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+    arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    id="scene"
+    embedded
+    gesture-detector
+  >
+
+  <!-- https://stackoverflow.com/questions/44839409/a-frame-text-is-not-displaying-in-android-phone -->
+  <a-assets>
+    <img id="reception" crossorigin="anonymous" src="https://cdn.glitch.com/5874228b-d8b5-4335-9d1b-5e623a35b987%2Freception.jpg?1498790772677">
+  </a-assets>
+  <!-- radiusよりも後ろにオブジェクトが行ってしまうと、オブジェクトが見えなくなる（写真が前に来てしまう） -->
+  <a-sky id="pano" radius="50" src="#reception"></a-sky>
+
+  <!-- <a-text value="xxxxx" position="-0.3 1.4 -3" color="#000" ></a-text> -->
+  <!-- <a-entity geometry="primitive: box" material="color: red" position="-0.3 1.4 -3"></a-entity> -->
+
+  <!-- <a-entity text="value: HELLO; color: red; width: 2;" position="-0.3 1.4 -3"></a-entity> -->
+  <a-entity geometry="primitive: box; width: 3" material="color: red"></a-entity>
+  <a-entity text value="howw" position="0.1 0.9 -0.2" color="#000">
+    how
+  </a-entity>
+  <a-assets>
+      <a-asset-item
+          id="animated-asset"
+          src="asset.glb"
+      ></a-asset-item>
+  </a-assets>
+  <a-entity>
+
+  <!-- a-entityで入れ子にすることで、オブジェクトの調整ができる。👇の場合、一番外のa-entityにpositionを設定することで想定の動き。中のa-entityにposition設定してしまうと半径2(positionのy座標)の演習場を回転してしまう。 -->
+  <a-entity position="-0 2 -10">
+  <a-entity animation="property: rotation;to: 0 360 0; easing: linear; loop: true; dur: 10000">
+    <a-gltf-model src="#animated-asset" class="clickable" rotation="-0 0 -0" scale="0.50 0.50 0.50" ></a-gltf-model>
+  </a-entity>
+</a-entity>
+
+  <a-camera wasd-control="false"></a-camera>
