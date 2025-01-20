@@ -9,7 +9,7 @@
 <a-camera gps-camera rotation-reader> </a-camera>
 </a-scene> -->
 
-<a-scene id="scene_el" vr-mode-ui='enabled: false;' arjs='trackingMethod: best; sourceType: webcam; videoTexture: true; debugUIEnabled: false;' renderer='antialias: true; alpha: true; logarithmicDepthBuffer: true;' loading-screen="enabled: false;">
+<a-scene id="scene_el" embedded vr-mode-ui='enabled: false;' arjs='trackingMethod: best; sourceType: webcam; videoTexture: true; debugUIEnabled: false;' renderer='antialias: true; alpha: true; logarithmicDepthBuffer: true;' loading-screen="enabled: false;">
   <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
   <a-text value="FTC" scale="30 30 40" gps-new-entity-place="latitude: 35.3365; longitude: 139.498"></a-text>
 </a-scene>
